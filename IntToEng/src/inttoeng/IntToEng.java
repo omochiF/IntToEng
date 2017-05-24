@@ -6,7 +6,7 @@ public class IntToEng {
 			"six","seven","eight","nine","ten","eleven",
 			"twelve","thirteen","fourteen","fifteen","sixteen",
 			"seventeen","eighteen","nineteen"};
-	static String[] tens = {"","","twenty","thirty","fourty","fifty","sixty","seventy","eighty","ninety"};
+	static String[] tens = {"", "","twenty","thirty","fourty","fifty","sixty","seventy","eighty","ninety"};
 	
     // メインメソッド
     public static void main(String[] args) {
@@ -21,45 +21,45 @@ public class IntToEng {
     	// 0の場合
     	if(n == 0) return "zero";
     	
-    	StringBuffer sb = new StringBuffer();
+    	String s = "";
     	
     	//1,000,000の位
     	if(n>=1000000){
-    		one2hund(n/1000000, sb);
-    		sb.append(" million");
-    		if(n%1000000 != 0 && !sb.equals("")) sb.append(" ");
+    		s += one2hund(n/1000000);
+    		s += " million";
+    		if(n%1000000 != 0 && !s.equals("")) s += " ";
     		n %= 1000000;
     	}
     	
     	//1000の位
     	if(n>=1000) {
-    		one2hund(n/1000, sb);
-    		sb.append(" thousand");
-    		if(n%1000 != 0 && !sb.equals("")) sb.append(" ");
+    		s += one2hund(n/1000);
+    		s += " thousand";
+    		if(n%1000 != 0 && !s.equals("")) s += " ";
     		n %= 1000;
     	}
-    	one2hund(n, sb);
-    	return sb.toString();
+    	s += one2hund(n);
+    	return s;
     }
     
-    public static void one2hund(int n, StringBuffer sb) {
+    public static String one2hund(int n) {
+    	String s = "";
     	//100の位
     	if(n>=100) {
-    		sb.append(num[n/100] + " hundred");
-    		if(n%100 != 0 && !sb.equals("")) sb.append(" ");
+    		s += num[n/100] + " hundred";
+        	if(n%100 != 0 && !s.equals("")) s += " ";
     		n %= 100;
     	}
 
     	// 10の位
-    	sb.append(tens[n/10]);
-    	
+    	s += tens[n/10];
     	
     	// 10~19
-    	if(10 <= n && n < 20) sb.append(num[n]);
+    	if(10 <= n && n < 20) s += num[n];
     	else { // 1の位
-    		if(n%10 != 0 && !sb.equals("")) sb.append(" ");
-    		sb.append(num[n%10]);
-    		
+    		if(n%10 != 0 && !s.equals("")) s += " ";
+    		s += num[n%10];
     	}
+    	return s;
     }
 }
