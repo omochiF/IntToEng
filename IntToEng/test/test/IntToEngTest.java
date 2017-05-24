@@ -62,6 +62,5 @@ public class IntToEngTest {
 		String actual = ite.translateEng(333);
 		assertThat(actual, is(expected));
 	}
-	
 
 }
