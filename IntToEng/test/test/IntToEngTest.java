@@ -95,5 +95,13 @@ public class IntToEngTest {
 		assertThat(actual, is(expected));
 	}
 	
+	@Test
+	public void translateEngに999999999を与える() {
+		IntToEng ite = new IntToEng();
+		String expected = "nine hundred ninety nine million nine hundred ninety nine thousand nine hundred ninety nine";
+		String actual = ite.translateEng(999999999);
+		assertThat(actual, is(expected));
+	}
+	
 
 }
