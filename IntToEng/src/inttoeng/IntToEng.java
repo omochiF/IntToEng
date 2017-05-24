@@ -23,6 +23,14 @@ public class IntToEng {
     	
     	StringBuffer sb = new StringBuffer();
     	
+    	//1,000,000の位
+    	if(n>=1000000){
+    		one2hund(n/1000000, sb);
+    		sb.append(" million");
+    		if(n%1000000 != 0 && !sb.equals("")) sb.append(" ");
+    		n %= 1000000;
+    	}
+    	
     	//1000の位
     	if(n>=1000) {
     		one2hund(n/1000, sb);
@@ -45,11 +53,13 @@ public class IntToEng {
     	// 10の位
     	sb.append(tens[n/10]);
     	
-    	// 11~19
+    	
+    	// 10~19
     	if(10 <= n && n < 20) sb.append(num[n]);
     	else { // 1の位
     		if(n%10 != 0 && !sb.equals("")) sb.append(" ");
     		sb.append(num[n%10]);
+    		
     	}
     }
 }
