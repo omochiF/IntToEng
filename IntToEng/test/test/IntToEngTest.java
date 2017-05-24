@@ -103,5 +103,14 @@ public class IntToEngTest {
 		assertThat(actual, is(expected));
 	}
 	
+	//intの最大値
+	@Test
+	public void translateEngに2147483647を与える() {
+		IntToEng ite = new IntToEng();
+		String expected = "two billion one hundred fourty seven million four hundred eighty three thousand six hundred fourty seven";
+		String actual = ite.translateEng(2147483647);
+		assertThat(actual, is(expected));
+	}
+	
 
 }
